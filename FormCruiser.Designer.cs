@@ -56,6 +56,7 @@ namespace WindowsFormsCruiser
             this.buttonCreate.TabIndex = 1;
             this.buttonCreate.Text = "Создать";
             this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonUp
             // 
@@ -67,6 +68,7 @@ namespace WindowsFormsCruiser
             this.buttonUp.Size = new System.Drawing.Size(50, 50);
             this.buttonUp.TabIndex = 2;
             this.buttonUp.UseVisualStyleBackColor = true;
+            this.buttonUp.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // buttonDown
             // 
@@ -78,6 +80,7 @@ namespace WindowsFormsCruiser
             this.buttonDown.Size = new System.Drawing.Size(50, 50);
             this.buttonDown.TabIndex = 3;
             this.buttonDown.UseVisualStyleBackColor = true;
+            this.buttonDown.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // buttonRight
             // 
@@ -89,6 +92,7 @@ namespace WindowsFormsCruiser
             this.buttonRight.Size = new System.Drawing.Size(50, 50);
             this.buttonRight.TabIndex = 4;
             this.buttonRight.UseVisualStyleBackColor = true;
+            this.buttonRight.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // buttonLeft
             // 
@@ -100,6 +104,7 @@ namespace WindowsFormsCruiser
             this.buttonLeft.Size = new System.Drawing.Size(50, 50);
             this.buttonLeft.TabIndex = 5;
             this.buttonLeft.UseVisualStyleBackColor = true;
+            this.buttonLeft.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // FormCruiser
             // 
