@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cruiser.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
