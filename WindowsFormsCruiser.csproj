@@ -54,6 +54,7 @@
     <Compile Include="FormCruiser.Designer.cs">
       <DependentUpon>FormCruiser.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCruiser.resx">
