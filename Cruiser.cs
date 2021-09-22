@@ -7,9 +7,9 @@ using System.Drawing;
 
 namespace WindowsFormsCruiser
 {
-    class Cruiser
+    public class Cruiser : Ship
     {
-        private float _startPosX;
+        /*private float _startPosX;
         private float _startPosY;
         private int _pictureWidth;
         private int _pictureHeight;
@@ -17,14 +17,24 @@ namespace WindowsFormsCruiser
         private readonly int cruiserHeight = 20;
         public int MaxSpeed { private set; get; }
         public float Weight { private set; get; }
-        public Color MainColor { private set; get; }
+        public Color MainColor { private set; get; }*/
         public Color DopColor { private set; get; }
         //мои свойства
         public bool Helipad { private set; get; }
         public bool Radar { private set; get; }
         public bool Gun { private set; get; }
 
-        public void Init(int maxSpeed, float weight, Color mainColor, Color dopColor, bool helipad, bool radar, bool gun)
+        public Cruiser(int maxSpeed, float weight, Color mainColor, Color dopColor, 
+            bool helipad, bool radar, bool gun) 
+            : base(maxSpeed, weight, mainColor, 100, 60)
+        {
+            DopColor = dopColor;
+            Helipad = helipad;
+            Radar = radar;
+            Gun = gun;
+        }
+
+        /*public void Init(int maxSpeed, float weight, Color mainColor, Color dopColor, bool helipad, bool radar, bool gun)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
@@ -33,17 +43,17 @@ namespace WindowsFormsCruiser
             Helipad = helipad;
             Radar = radar;
             Gun = gun;
-        }
+        }*/
 
-        public void SetPosition(int x, int y, int width, int height)
+        /*public void SetPosition(int x, int y, int width, int height)
         {
             _startPosX = x + 100;
             _startPosY = y + 100;
             _pictureWidth = width;
             _pictureHeight = height;
-        }
+        }*/
 
-        public void MoveCruiser(Direction direction)
+        /*public void MoveCruiser(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
@@ -78,14 +88,16 @@ namespace WindowsFormsCruiser
                     }
                     break;
             }
-        }
+        }*/
 
-        public void DrawCruiser(Graphics g)
+        public override void DrawCruiser(Graphics g)
         {
-            Brush brushMain = new SolidBrush(MainColor);
+            // отрисовка основной части
+            base.DrawCruiser(g);
             Brush brushDop = new SolidBrush(DopColor);
             Pen penDop = new Pen(DopColor);
             Pen penMain = new Pen(Color.White);
+            /*Brush brushMain = new SolidBrush(MainColor);
             PointF deckPoint1 = new PointF(_startPosX - 50.0F, _startPosY - 25.0F);
             PointF deckPoint2 = new PointF(_startPosX + 50.0F, _startPosY - 25.0F);
             PointF deckPoint3 = new PointF(_startPosX + 90.0F, _startPosY);
@@ -106,7 +118,7 @@ namespace WindowsFormsCruiser
             g.FillRectangle(brushMain, _startPosX - 55, _startPosY - 7, 5, 10);
             g.FillRectangle(brushMain, _startPosX - 55, _startPosY + 5, 5, 10);
             g.DrawRectangle(penMain, _startPosX - 55, _startPosY - 7, 5, 10);
-            g.DrawRectangle(penMain, _startPosX - 55, _startPosY + 5, 5, 10);
+            g.DrawRectangle(penMain, _startPosX - 55, _startPosY + 5, 5, 10);*/
 
             if (Helipad)
             {
