@@ -48,14 +48,17 @@
   <ItemGroup>
     <Compile Include="Cruiser.cs" />
     <Compile Include="Direction.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FormCruiser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormCruiser.Designer.cs">
+      <DependentUpon>FormCruiser.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCruiser.resx">
+      <DependentUpon>FormCruiser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

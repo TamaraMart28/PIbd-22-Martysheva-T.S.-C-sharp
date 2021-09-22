@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsCruiser
 {
-    public partial class Form1 : Form
+    public partial class FormCruiser : Form
     {
-        public Form1()
+        public FormCruiser()
         {
             InitializeComponent();
         }
