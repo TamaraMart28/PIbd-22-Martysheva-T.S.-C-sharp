@@ -12,7 +12,7 @@ namespace WindowsFormsCruiser
 {
     public partial class FormCruiser : Form
     {
-        private Cruiser cruiser;
+        private ITransport ship;
         public FormCruiser()
         {
             InitializeComponent();
@@ -22,17 +22,18 @@ namespace WindowsFormsCruiser
         {
             Bitmap bmp = new Bitmap(pictureBoxCruiser.Width, pictureBoxCruiser.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            cruiser.DrawCruiser(gr);
+            ship.DrawCruiser(gr);
             pictureBoxCruiser.Image = bmp;
         }
 
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCreateCruiser_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            cruiser = new Cruiser();
-            cruiser.Init(rnd.Next(100, 150), rnd.Next(1000, 2000), Color.Pink, Color.Purple,
+            ship = new Cruiser(rnd.Next(100, 150), rnd.Next(1000, 2000), Color.Pink, Color.Purple,
                 true, true, true);
-            cruiser.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100),
+            /*cruiser.Init(rnd.Next(100, 150), rnd.Next(1000, 2000), Color.Pink, Color.Purple,
+                true, true, true);*/
+            ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100),
                 pictureBoxCruiser.Width, pictureBoxCruiser.Height);
             Draw();
         }
@@ -44,19 +45,29 @@ namespace WindowsFormsCruiser
             switch (name)
             {
                 case "buttonUp":
-                    cruiser.MoveCruiser(Direction.Up);
+                    ship.MoveCruiser(Direction.Up);
                     break;
                 case "buttonDown":
-                    cruiser.MoveCruiser(Direction.Down);
+                    ship.MoveCruiser(Direction.Down);
                     break;
                 case "buttonLeft":
-                    cruiser.MoveCruiser(Direction.Left);
+                    ship.MoveCruiser(Direction.Left);
                     break;
                 case "buttonRight":
-                    cruiser.MoveCruiser(Direction.Right);
+                    ship.MoveCruiser(Direction.Right);
                     break;
             }
             Draw();
+        }
+
+        private void buttonCreateShip_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            ship = new Ship(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
+            ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCruiser.Width,
+           pictureBoxCruiser.Height);
+            Draw();
+
         }
     }
 }

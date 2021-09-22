@@ -30,11 +30,12 @@ namespace WindowsFormsCruiser
         private void InitializeComponent()
         {
             this.pictureBoxCruiser = new System.Windows.Forms.PictureBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonCreateCruiser = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
+            this.buttonCreateShip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCruiser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,16 +48,16 @@ namespace WindowsFormsCruiser
             this.pictureBoxCruiser.TabIndex = 0;
             this.pictureBoxCruiser.TabStop = false;
             // 
-            // buttonCreate
+            // buttonCreateCruiser
             // 
-            this.buttonCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonCreate.Location = new System.Drawing.Point(12, 12);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreateCruiser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonCreateCruiser.Location = new System.Drawing.Point(153, 12);
+            this.buttonCreateCruiser.Name = "buttonCreateCruiser";
+            this.buttonCreateCruiser.Size = new System.Drawing.Size(135, 23);
+            this.buttonCreateCruiser.TabIndex = 1;
+            this.buttonCreateCruiser.Text = "Создать крейсер";
+            this.buttonCreateCruiser.UseVisualStyleBackColor = true;
+            this.buttonCreateCruiser.Click += new System.EventHandler(this.buttonCreateCruiser_Click);
             // 
             // buttonUp
             // 
@@ -106,16 +107,28 @@ namespace WindowsFormsCruiser
             this.buttonLeft.UseVisualStyleBackColor = true;
             this.buttonLeft.Click += new System.EventHandler(this.buttonMove_Click);
             // 
+            // buttonCreateShip
+            // 
+            this.buttonCreateShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonCreateShip.Location = new System.Drawing.Point(12, 12);
+            this.buttonCreateShip.Name = "buttonCreateShip";
+            this.buttonCreateShip.Size = new System.Drawing.Size(135, 23);
+            this.buttonCreateShip.TabIndex = 6;
+            this.buttonCreateShip.Text = "Создать корабль";
+            this.buttonCreateShip.UseVisualStyleBackColor = true;
+            this.buttonCreateShip.Click += new System.EventHandler(this.buttonCreateShip_Click);
+            // 
             // FormCruiser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 462);
+            this.Controls.Add(this.buttonCreateShip);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonUp);
-            this.Controls.Add(this.buttonCreate);
+            this.Controls.Add(this.buttonCreateCruiser);
             this.Controls.Add(this.pictureBoxCruiser);
             this.Name = "FormCruiser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -128,11 +141,12 @@ namespace WindowsFormsCruiser
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxCruiser;
-        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Button buttonCreateCruiser;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonLeft;
+        private System.Windows.Forms.Button buttonCreateShip;
     }
 }
 
