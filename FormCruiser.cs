@@ -30,9 +30,9 @@ namespace WindowsFormsCruiser
         {
             Random rnd = new Random();
             cruiser = new Cruiser();
-            cruiser.Init(rnd.Next(100, 150), rnd.Next(1000, 2000), Color.Pink, Color.Purple,
+            cruiser.Init(rnd.Next(100, 150) + 100, rnd.Next(1000, 2000) + 100, Color.Pink, Color.Purple,
                 true, true, true);
-            cruiser.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100),
+            cruiser.SetPosition(rnd.Next(100, 200), rnd.Next(100, 200),
                 pictureBoxCruiser.Width, pictureBoxCruiser.Height);
             Draw();
         }
