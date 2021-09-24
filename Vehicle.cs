@@ -20,12 +20,12 @@ namespace WindowsFormsCruiser
         public Color MainColor { protected set; get; }
         public void SetPosition(int x, int y, int width, int height)
         {
-            _startPosX = x + 100;
-            _startPosY = y + 100;
+            _startPosX = x;
+            _startPosY = y;
             _pictureWidth = width;
             _pictureHeight = height;
         }
-        public abstract void DrawCruiser(Graphics g);
-        public abstract void MoveCruiser(Direction direction);
+        public abstract void DrawTransport(Graphics g);
+        public abstract void MoveTransport(Direction direction);
     }
 }

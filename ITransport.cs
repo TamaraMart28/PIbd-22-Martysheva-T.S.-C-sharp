@@ -11,7 +11,7 @@ namespace WindowsFormsCruiser
     public interface ITransport
     {
         void SetPosition(int x, int y, int width, int height);
-        void MoveCruiser(Direction direction);
-        void DrawCruiser(Graphics g);
+        void MoveTransport(Direction direction);
+        void DrawTransport(Graphics g);
     }
 }

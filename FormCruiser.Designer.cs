@@ -29,24 +29,24 @@ namespace WindowsFormsCruiser
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxCruiser = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTransports = new System.Windows.Forms.PictureBox();
             this.buttonCreateCruiser = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonCreateShip = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCruiser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTransports)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBoxCruiser
+            // pictureBoxTransports
             // 
-            this.pictureBoxCruiser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxCruiser.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxCruiser.Name = "pictureBoxCruiser";
-            this.pictureBoxCruiser.Size = new System.Drawing.Size(884, 462);
-            this.pictureBoxCruiser.TabIndex = 0;
-            this.pictureBoxCruiser.TabStop = false;
+            this.pictureBoxTransports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxTransports.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxTransports.Name = "pictureBoxTransports";
+            this.pictureBoxTransports.Size = new System.Drawing.Size(884, 462);
+            this.pictureBoxTransports.TabIndex = 0;
+            this.pictureBoxTransports.TabStop = false;
             // 
             // buttonCreateCruiser
             // 
@@ -129,18 +129,18 @@ namespace WindowsFormsCruiser
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonCreateCruiser);
-            this.Controls.Add(this.pictureBoxCruiser);
+            this.Controls.Add(this.pictureBoxTransports);
             this.Name = "FormCruiser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Крейсер";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCruiser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTransports)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxCruiser;
+        private System.Windows.Forms.PictureBox pictureBoxTransports;
         private System.Windows.Forms.Button buttonCreateCruiser;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonDown;

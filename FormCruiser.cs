@@ -20,21 +20,19 @@ namespace WindowsFormsCruiser
 
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxCruiser.Width, pictureBoxCruiser.Height);
+            Bitmap bmp = new Bitmap(pictureBoxTransports.Width, pictureBoxTransports.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            ship.DrawCruiser(gr);
-            pictureBoxCruiser.Image = bmp;
+            ship.DrawTransport(gr);
+            pictureBoxTransports.Image = bmp;
         }
 
         private void buttonCreateCruiser_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            ship = new Cruiser(rnd.Next(100, 150), rnd.Next(1000, 2000), Color.Pink, Color.Purple,
+            ship = new Cruiser(rnd.Next(100, 150) + 100, rnd.Next(1000, 2000) + 100, Color.Pink, Color.Purple,
                 true, true, true);
-            /*cruiser.Init(rnd.Next(100, 150), rnd.Next(1000, 2000), Color.Pink, Color.Purple,
-                true, true, true);*/
-            ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100),
-                pictureBoxCruiser.Width, pictureBoxCruiser.Height);
+            ship.SetPosition(rnd.Next(100, 200), rnd.Next(100, 200),
+                pictureBoxTransports.Width, pictureBoxTransports.Height);
             Draw();
         }
 
@@ -45,16 +43,16 @@ namespace WindowsFormsCruiser
             switch (name)
             {
                 case "buttonUp":
-                    ship.MoveCruiser(Direction.Up);
+                    ship.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
-                    ship.MoveCruiser(Direction.Down);
+                    ship.MoveTransport(Direction.Down);
                     break;
                 case "buttonLeft":
-                    ship.MoveCruiser(Direction.Left);
+                    ship.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                    ship.MoveCruiser(Direction.Right);
+                    ship.MoveTransport(Direction.Right);
                     break;
             }
             Draw();
@@ -63,9 +61,9 @@ namespace WindowsFormsCruiser
         private void buttonCreateShip_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            ship = new Ship(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
-            ship.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCruiser.Width,
-           pictureBoxCruiser.Height);
+            ship = new Ship(rnd.Next(100, 300) + 100, rnd.Next(1000, 2000) + 100, Color.Pink);
+            ship.SetPosition(rnd.Next(100, 200), rnd.Next(100, 200), pictureBoxTransports.Width,
+           pictureBoxTransports.Height);
             Draw();
 
         }
