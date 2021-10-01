@@ -36,6 +36,15 @@ namespace WindowsFormsCruiser
             Draw();
         }
 
+        private void buttonCreateShip_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            ship = new Ship(rnd.Next(100, 300) + 100, rnd.Next(1000, 2000) + 100, Color.Pink);
+            ship.SetPosition(rnd.Next(100, 200), rnd.Next(100, 200), pictureBoxTransports.Width,
+           pictureBoxTransports.Height);
+            Draw();
+        }
+
         private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки
@@ -56,16 +65,6 @@ namespace WindowsFormsCruiser
                     break;
             }
             Draw();
-        }
-
-        private void buttonCreateShip_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            ship = new Ship(rnd.Next(100, 300) + 100, rnd.Next(1000, 2000) + 100, Color.Pink);
-            ship.SetPosition(rnd.Next(100, 200), rnd.Next(100, 200), pictureBoxTransports.Width,
-           pictureBoxTransports.Height);
-            Draw();
-
         }
     }
 }
