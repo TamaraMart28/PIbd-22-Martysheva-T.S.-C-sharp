@@ -32,7 +32,7 @@ namespace WindowsFormsCruiser
             Brush brushDop = new SolidBrush(DopColor);
             Pen penDop = new Pen(DopColor);
             Pen penMain = new Pen(Color.White);
-
+            
             if (Helipad)
             {
                 g.FillRectangle(brushDop, _startPosX + 10, _startPosY + 5, 35, 40);
