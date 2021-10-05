@@ -33,9 +33,9 @@ namespace WindowsFormsCruiser
             this.buttonSetShip = new System.Windows.Forms.Button();
             this.buttonSetCruiser = new System.Windows.Forms.Button();
             this.groupBoxDocking = new System.Windows.Forms.GroupBox();
-            this.labelPlace = new System.Windows.Forms.Label();
-            this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
             this.buttonTakeShip = new System.Windows.Forms.Button();
+            this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
+            this.labelPlace = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDocking)).BeginInit();
             this.groupBoxDocking.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,7 @@ namespace WindowsFormsCruiser
             this.buttonSetShip.TabIndex = 1;
             this.buttonSetShip.Text = "Швартовка корабля";
             this.buttonSetShip.UseVisualStyleBackColor = true;
+            this.buttonSetShip.Click += new System.EventHandler(this.buttonSetShip_Click);
             // 
             // buttonSetCruiser
             // 
@@ -66,6 +67,7 @@ namespace WindowsFormsCruiser
             this.buttonSetCruiser.TabIndex = 2;
             this.buttonSetCruiser.Text = "Швартовка крейсера";
             this.buttonSetCruiser.UseVisualStyleBackColor = true;
+            this.buttonSetCruiser.Click += new System.EventHandler(this.buttonSetCruiser_Click);
             // 
             // groupBoxDocking
             // 
@@ -79,14 +81,15 @@ namespace WindowsFormsCruiser
             this.groupBoxDocking.TabStop = false;
             this.groupBoxDocking.Text = "Забрать корабль";
             // 
-            // labelPlace
+            // buttonTakeShip
             // 
-            this.labelPlace.AutoSize = true;
-            this.labelPlace.Location = new System.Drawing.Point(30, 31);
-            this.labelPlace.Name = "labelPlace";
-            this.labelPlace.Size = new System.Drawing.Size(39, 13);
-            this.labelPlace.TabIndex = 0;
-            this.labelPlace.Text = "Место";
+            this.buttonTakeShip.Location = new System.Drawing.Point(48, 65);
+            this.buttonTakeShip.Name = "buttonTakeShip";
+            this.buttonTakeShip.Size = new System.Drawing.Size(75, 23);
+            this.buttonTakeShip.TabIndex = 2;
+            this.buttonTakeShip.Text = "Забрать";
+            this.buttonTakeShip.UseVisualStyleBackColor = true;
+            this.buttonTakeShip.Click += new System.EventHandler(this.buttonTakeShip_Click);
             // 
             // maskedTextBoxPlace
             // 
@@ -96,14 +99,14 @@ namespace WindowsFormsCruiser
             this.maskedTextBoxPlace.Size = new System.Drawing.Size(70, 20);
             this.maskedTextBoxPlace.TabIndex = 1;
             // 
-            // buttonTakeShip
+            // labelPlace
             // 
-            this.buttonTakeShip.Location = new System.Drawing.Point(48, 65);
-            this.buttonTakeShip.Name = "buttonTakeShip";
-            this.buttonTakeShip.Size = new System.Drawing.Size(75, 23);
-            this.buttonTakeShip.TabIndex = 2;
-            this.buttonTakeShip.Text = "Забрать";
-            this.buttonTakeShip.UseVisualStyleBackColor = true;
+            this.labelPlace.AutoSize = true;
+            this.labelPlace.Location = new System.Drawing.Point(30, 31);
+            this.labelPlace.Name = "labelPlace";
+            this.labelPlace.Size = new System.Drawing.Size(39, 13);
+            this.labelPlace.TabIndex = 0;
+            this.labelPlace.Text = "Место";
             // 
             // FormDocking
             // 
