@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace WindowsFormsCruiser
 {
-    public class Dock<T> where T : class, ITransport
+    public class Docking<T> where T : class, ITransport
     {
         private readonly T[] _places;
         private readonly int pictureWidth;
@@ -16,7 +16,7 @@ namespace WindowsFormsCruiser
         private readonly int _placeSizeWidth = 210;
         private readonly int _placeSizeHeight = 80;
 
-        public Dock(int picWidth, int picHeight)
+        public Docking(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
@@ -25,13 +25,13 @@ namespace WindowsFormsCruiser
             pictureHeight = picHeight;
         }
 
-        public static bool operator +(Dock<T> p, T ship)
+        public static bool operator +(Docking<T> p, T ship)
         {
             // Прописать логику для сложения
             return true;
         }
 
-        public static T operator -(Dock<T> p, int index)
+        public static T operator -(Docking<T> p, int index)
         {
             // Прописать логику для вычитания
             return null;
