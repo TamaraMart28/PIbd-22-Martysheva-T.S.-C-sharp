@@ -18,11 +18,17 @@ namespace WindowsFormsCruiser
             InitializeComponent();
         }
 
+        public void SetShip(ITransport ship)
+        {
+            this.ship = ship;
+            Draw();
+        }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxTransports.Width, pictureBoxTransports.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            ship.DrawTransport(gr);
+            ship?.DrawTransport(gr);
             pictureBoxTransports.Image = bmp;
         }
 
@@ -52,16 +58,16 @@ namespace WindowsFormsCruiser
             switch (name)
             {
                 case "buttonUp":
-                    ship.MoveTransport(Direction.Up);
+                    ship?.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
-                    ship.MoveTransport(Direction.Down);
+                    ship?.MoveTransport(Direction.Down);
                     break;
                 case "buttonLeft":
-                    ship.MoveTransport(Direction.Left);
+                    ship?.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                    ship.MoveTransport(Direction.Right);
+                    ship?.MoveTransport(Direction.Right);
                     break;
             }
             Draw();
