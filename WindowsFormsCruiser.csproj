@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Cruiser.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="Dock.cs" />
     <Compile Include="FormCruiser.cs">
       <SubType>Form</SubType>
     </Compile>
