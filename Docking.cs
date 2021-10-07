@@ -13,8 +13,8 @@ namespace WindowsFormsCruiser
         private readonly int pictureWidth;
         private readonly int pictureHeight;
         // изменить размеры мест
-        private readonly int _placeSizeWidth = 210;
-        private readonly int _placeSizeHeight = 80;
+        private readonly int _placeSizeWidth = 322;
+        private readonly int _placeSizeHeight = 66;
 
         public Docking(int picWidth, int picHeight)
         {
@@ -48,18 +48,36 @@ namespace WindowsFormsCruiser
 
         private void DrawMarking(Graphics g)
         {
+            Brush brushOlive = new SolidBrush(Color.Olive);
+            Brush brushBrown = new SolidBrush(Color.Brown);
+            Pen pen = new Pen(Color.Brown, 4);
             // свой рисунок
-            Pen pen = new Pen(Color.Black, 3);
+            /*for (int i = 0; i < pictureWidth / _placeSizeWidth; i++)
+            {
+                //g.FillRectangle(brush, (i+1) * _placeSizeWidth + 4, 0, 10, (pictureHeight / _placeSizeHeight) * _placeSizeHeight + 15);
+                g.DrawLine(pen, (i + 1) * _placeSizeWidth, 0, 10, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
+                for (int j = 0; j < pictureHeight / _placeSizeHeight; j++)
+                {
+                    int indentLeft = 0;
+                    if (i == 1) indentLeft = 14;
+                    g.FillRectangle(brush, i * _placeSizeWidth + 2 + indentLeft, j * _placeSizeHeight + 5, _placeSizeWidth, _placeSizeHeight);
+                    
+                }
+            }
+            g.FillRectangle(brush, 0, (pictureHeight / _placeSizeHeight) * _placeSizeHeight + 10, pictureWidth, 10);*/
+
             for (int i = 0; i < pictureWidth / _placeSizeWidth; i++)
             {
-                for (int j = 0; j < pictureHeight / _placeSizeHeight + 1; ++j)
-                {//линия рамзетки места
+                for (int j = 0; j < pictureHeight / _placeSizeHeight-1; ++j)
+                {
+                    g.FillRectangle(brushOlive, i * _placeSizeWidth + 4, j * _placeSizeHeight + 4, _placeSizeWidth/2 - 4, _placeSizeHeight - 8);
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight, i *
                    _placeSizeWidth + _placeSizeWidth / 2, j * _placeSizeHeight);
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth,
-               (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
+               (pictureHeight / _placeSizeHeight - 1) * _placeSizeHeight);
             }
+            g.FillRectangle(brushBrown, 0, (pictureHeight / _placeSizeHeight - 1) * _placeSizeHeight, pictureWidth, 10);
         }
     }
 }
