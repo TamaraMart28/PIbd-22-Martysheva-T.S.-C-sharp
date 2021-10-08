@@ -12,7 +12,6 @@ namespace WindowsFormsCruiser
         private readonly T[] _places;
         private readonly int pictureWidth;
         private readonly int pictureHeight;
-        // изменить размеры мест
         private readonly int _placeSizeWidth = 322;
         private readonly int _placeSizeHeight = 66;
 
@@ -24,17 +23,42 @@ namespace WindowsFormsCruiser
             pictureWidth = picWidth;
             pictureHeight = picHeight;
         }
-
-        public static bool operator +(Docking<T> p, T ship)
+        
+        public static int operator +(Docking<T> p, T ship)
         {
-            // Прописать логику для сложения
-            return true;
+            int i = 0;
+            while(i < p.pictureHeight / p._placeSizeHeight - 1)
+            {
+                int j = 0;
+                while(j < p.pictureWidth / p._placeSizeWidth)
+                {
+                    if(p._places[i*(p.pictureWidth / p._placeSizeWidth) + j] == null)
+                    {
+                        p._places[i * (p.pictureWidth / p._placeSizeWidth) + j] = ship;
+                        ship.SetPosition(p._placeSizeWidth * j + 6, p._placeSizeHeight * i + 8, p.pictureWidth, p.pictureHeight);
+                        return (i * (p.pictureWidth / p._placeSizeWidth) + j);
+                    }
+                    j++;
+                }
+                i++;
+            }
+            return -1;
         }
 
         public static T operator -(Docking<T> p, int index)
         {
             // Прописать логику для вычитания
-            return null;
+            if (index >= p._places.Length) return null;
+            else
+            {
+                if (p._places[index] == null) return null;
+                else
+                {
+                    T temp = p._places[index];
+                    p._places[index] = null;
+                    return temp;
+                }
+            }
         }
 
         public void Draw(Graphics g)

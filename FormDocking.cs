@@ -35,7 +35,7 @@ namespace WindowsFormsCruiser
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var ship = new Ship(100, 1000, dialog.Color);
-                if (docking + ship)
+                if (docking + ship != -1)
                 {
                     Draw();
                 }
@@ -56,7 +56,7 @@ namespace WindowsFormsCruiser
                 {
                     var ship = new Cruiser(100, 1000, dialog.Color, dialogDop.Color,
                    true, true, true);
-                    if (docking + ship)
+                    if (docking + ship != -1)
                     {
                         Draw();
                     }
