@@ -47,7 +47,6 @@ namespace WindowsFormsCruiser
 
         public static T operator -(Docking<T> p, int index)
         {
-            // Прописать логику для вычитания
             if (index >= p._places.Length) return null;
             else
             {
@@ -75,21 +74,6 @@ namespace WindowsFormsCruiser
             Brush brushOlive = new SolidBrush(Color.Olive);
             Brush brushBrown = new SolidBrush(Color.Brown);
             Pen pen = new Pen(Color.Brown, 4);
-            // свой рисунок
-            /*for (int i = 0; i < pictureWidth / _placeSizeWidth; i++)
-            {
-                //g.FillRectangle(brush, (i+1) * _placeSizeWidth + 4, 0, 10, (pictureHeight / _placeSizeHeight) * _placeSizeHeight + 15);
-                g.DrawLine(pen, (i + 1) * _placeSizeWidth, 0, 10, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
-                for (int j = 0; j < pictureHeight / _placeSizeHeight; j++)
-                {
-                    int indentLeft = 0;
-                    if (i == 1) indentLeft = 14;
-                    g.FillRectangle(brush, i * _placeSizeWidth + 2 + indentLeft, j * _placeSizeHeight + 5, _placeSizeWidth, _placeSizeHeight);
-                    
-                }
-            }
-            g.FillRectangle(brush, 0, (pictureHeight / _placeSizeHeight) * _placeSizeHeight + 10, pictureWidth, 10);*/
-
             for (int i = 0; i < pictureWidth / _placeSizeWidth; i++)
             {
                 for (int j = 0; j < pictureHeight / _placeSizeHeight-1; ++j)
