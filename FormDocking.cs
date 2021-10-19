@@ -12,57 +12,88 @@ namespace WindowsFormsCruiser
 {
     public partial class FormDocking : Form
     {
-        private readonly Docking<Ship> docking;
+        private readonly DockingCollection dockingCollection;
 
         public FormDocking()
         {
             InitializeComponent();
-            docking = new Docking<Ship>(pictureBoxDocking.Width, pictureBoxDocking.Height);
-            Draw();
+            dockingCollection = new DockingCollection(pictureBoxDocking.Width, pictureBoxDocking.Height);
+        }
+
+        private void ReloadLevels()
+        {
+            int index = listBoxDockings.SelectedIndex;
+            listBoxDockings.Items.Clear();
+            for (int i = 0; i < dockingCollection.Keys.Count; i++)
+            {
+                listBoxDockings.Items.Add(dockingCollection.Keys[i]);
+            }
+            if (listBoxDockings.Items.Count > 0 && (index == -1 || index >= listBoxDockings.Items.Count))
+            {
+                listBoxDockings.SelectedIndex = 0;
+            }
+            else if (listBoxDockings.Items.Count > 0 && index > -1 && index < listBoxDockings.Items.Count)
+            {
+                listBoxDockings.SelectedIndex = index;
+            }
         }
 
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxDocking.Width, pictureBoxDocking.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            docking.Draw(gr);
-            pictureBoxDocking.Image = bmp;
+            if (listBoxDockings.SelectedIndex > -1)
+            {
+                Bitmap bmp = new Bitmap(pictureBoxDocking.Width, pictureBoxDocking.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                dockingCollection[listBoxDockings.SelectedItem.ToString()].Draw(gr);
+                pictureBoxDocking.Image = bmp;
+            }
+            else
+            {
+                Bitmap bmp = new Bitmap(pictureBoxDocking.Width, pictureBoxDocking.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                pictureBoxDocking.Image = bmp;
+            }
         }
 
         private void buttonSetShip_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxDockings.SelectedIndex > -1)
             {
-                var ship = new Ship(100, 1000, dialog.Color);
-                if (docking + ship != -1)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    Draw();
-                }
-                else
-                {
-                    MessageBox.Show("Нет свободных доков");
+                    var ship = new Ship(100, 1000, dialog.Color);
+                    if (dockingCollection[listBoxDockings.SelectedItem.ToString()] + ship != -1)
+                    {
+                        Draw();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Нет свободных доков на стоянке");
+                    }
                 }
             }
         }
 
         private void buttonSetCruiser_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxDockings.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var ship = new Cruiser(100, 1000, dialog.Color, dialogDop.Color,
-                   true, true, true);
-                    if (docking + ship != -1)
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
                     {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Нет свободных доков");
+                        var ship = new Cruiser(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
+                        if (dockingCollection[listBoxDockings.SelectedItem.ToString()] + ship != -1)
+                        {
+                            Draw();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Нет свободных доков на стоянке");
+                        }
                     }
                 }
             }
@@ -70,9 +101,9 @@ namespace WindowsFormsCruiser
 
         private void buttonTakeShip_Click(object sender, EventArgs e)
         {
-            if (maskedTextBoxPlace.Text != "")
+            if (listBoxDockings.SelectedIndex > -1 && maskedTextBoxPlace.Text != "")
             {
-                var ship = docking - Convert.ToInt32(maskedTextBoxPlace.Text);
+                var ship = dockingCollection[listBoxDockings.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxPlace.Text);
                 if (ship != null)
                 {
                     FormCruiser form = new FormCruiser();
@@ -81,6 +112,36 @@ namespace WindowsFormsCruiser
                 }
                 Draw();
             }
+        }
+
+        private void buttonAddDocking_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxNewDockingStage.Text))
+            {
+                MessageBox.Show("Введите название стоянки доков", "Ошибка",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            dockingCollection.AddDocking(textBoxNewDockingStage.Text);
+            ReloadLevels();
+        }
+
+        private void buttonDelDocking_Click(object sender, EventArgs e)
+        {
+            if (listBoxDockings.SelectedIndex > -1)
+            {
+                if (MessageBox.Show($"Удалить стоянку доков { listBoxDockings.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    dockingCollection.DelDocking(listBoxDockings.SelectedItem.ToString());
+                    ReloadLevels();
+                    Draw();
+                }
+            }
+        }
+
+        private void listBoxDockings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
         }
     }
 }

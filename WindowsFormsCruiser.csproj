@@ -49,6 +49,7 @@
     <Compile Include="Cruiser.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Docking.cs" />
+    <Compile Include="DockingCollection.cs" />
     <Compile Include="FormCruiser.cs">
       <SubType>Form</SubType>
     </Compile>
