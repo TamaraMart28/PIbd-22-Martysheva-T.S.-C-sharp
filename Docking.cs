@@ -9,7 +9,8 @@ namespace WindowsFormsCruiser
 {
     public class Docking<T> where T : class, ITransport
     {
-        private readonly T[] _places;
+        private readonly List<T> _places;
+        private readonly int _maxCount;
         private readonly int pictureWidth;
         private readonly int pictureHeight;
         private readonly int _placeSizeWidth = 322;
@@ -19,42 +20,32 @@ namespace WindowsFormsCruiser
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            _maxCount = width * (height-1);
             pictureWidth = picWidth;
             pictureHeight = picHeight;
+            _places = new List<T>();
         }
         
         public static int operator +(Docking<T> p, T ship)
         {
-            int i = 0;
-            while(i < p.pictureHeight / p._placeSizeHeight - 1)
+            if (p._places.Count < p._maxCount)
             {
-                int j = 0;
-                while(j < p.pictureWidth / p._placeSizeWidth)
-                {
-                    if(p._places[i*(p.pictureWidth / p._placeSizeWidth) + j] == null)
-                    {
-                        p._places[i * (p.pictureWidth / p._placeSizeWidth) + j] = ship;
-                        ship.SetPosition(p._placeSizeWidth * j + 6, p._placeSizeHeight * i + 8, p.pictureWidth, p.pictureHeight);
-                        return (i * (p.pictureWidth / p._placeSizeWidth) + j);
-                    }
-                    j++;
-                }
-                i++;
+                p._places.Add(ship);
+                return 1;
             }
             return -1;
         }
 
         public static T operator -(Docking<T> p, int index)
         {
-            if (index >= p._places.Length) return null;
+            if (index >= p._places.Count) return null;
             else
             {
                 if (p._places[index] == null) return null;
                 else
                 {
                     T temp = p._places[index];
-                    p._places[index] = null;
+                    p._places.RemoveAt(index);
                     return temp;
                 }
             }
@@ -63,9 +54,11 @@ namespace WindowsFormsCruiser
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0;  i < _places.Count;  ++i)
             {
-                _places[i]?.DrawTransport(g);
+                _places[i].SetPosition(i % (pictureWidth/_placeSizeWidth) * _placeSizeWidth + 6, 
+                    i / (pictureWidth / _placeSizeWidth) * _placeSizeHeight + 8, pictureWidth, pictureHeight);
+                _places[i].DrawTransport(g);
             }
         }
 
