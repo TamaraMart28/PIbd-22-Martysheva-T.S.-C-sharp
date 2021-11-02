@@ -30,8 +30,6 @@ namespace WindowsFormsCruiser
         private void InitializeComponent()
         {
             this.pictureBoxDocking = new System.Windows.Forms.PictureBox();
-            this.buttonSetShip = new System.Windows.Forms.Button();
-            this.buttonSetCruiser = new System.Windows.Forms.Button();
             this.groupBoxDocking = new System.Windows.Forms.GroupBox();
             this.buttonTakeShip = new System.Windows.Forms.Button();
             this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
@@ -41,6 +39,7 @@ namespace WindowsFormsCruiser
             this.textBoxNewDockingStage = new System.Windows.Forms.TextBox();
             this.buttonAddDocking = new System.Windows.Forms.Button();
             this.buttonDelDocking = new System.Windows.Forms.Button();
+            this.buttonSetShip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDocking)).BeginInit();
             this.groupBoxDocking.SuspendLayout();
             this.SuspendLayout();
@@ -54,32 +53,12 @@ namespace WindowsFormsCruiser
             this.pictureBoxDocking.TabIndex = 0;
             this.pictureBoxDocking.TabStop = false;
             // 
-            // buttonSetShip
-            // 
-            this.buttonSetShip.Location = new System.Drawing.Point(735, 12);
-            this.buttonSetShip.Name = "buttonSetShip";
-            this.buttonSetShip.Size = new System.Drawing.Size(121, 23);
-            this.buttonSetShip.TabIndex = 1;
-            this.buttonSetShip.Text = "Швартовка корабля";
-            this.buttonSetShip.UseVisualStyleBackColor = true;
-            this.buttonSetShip.Click += new System.EventHandler(this.buttonSetShip_Click);
-            // 
-            // buttonSetCruiser
-            // 
-            this.buttonSetCruiser.Location = new System.Drawing.Point(726, 56);
-            this.buttonSetCruiser.Name = "buttonSetCruiser";
-            this.buttonSetCruiser.Size = new System.Drawing.Size(137, 23);
-            this.buttonSetCruiser.TabIndex = 2;
-            this.buttonSetCruiser.Text = "Швартовка крейсера";
-            this.buttonSetCruiser.UseVisualStyleBackColor = true;
-            this.buttonSetCruiser.Click += new System.EventHandler(this.buttonSetCruiser_Click);
-            // 
             // groupBoxDocking
             // 
             this.groupBoxDocking.Controls.Add(this.buttonTakeShip);
             this.groupBoxDocking.Controls.Add(this.maskedTextBoxPlace);
             this.groupBoxDocking.Controls.Add(this.labelPlace);
-            this.groupBoxDocking.Location = new System.Drawing.Point(711, 106);
+            this.groupBoxDocking.Location = new System.Drawing.Point(711, 81);
             this.groupBoxDocking.Name = "groupBoxDocking";
             this.groupBoxDocking.Size = new System.Drawing.Size(168, 100);
             this.groupBoxDocking.TabIndex = 3;
@@ -116,7 +95,7 @@ namespace WindowsFormsCruiser
             // listBoxDockings
             // 
             this.listBoxDockings.FormattingEnabled = true;
-            this.listBoxDockings.Location = new System.Drawing.Point(711, 322);
+            this.listBoxDockings.Location = new System.Drawing.Point(714, 316);
             this.listBoxDockings.Name = "listBoxDockings";
             this.listBoxDockings.Size = new System.Drawing.Size(165, 134);
             this.listBoxDockings.TabIndex = 4;
@@ -125,7 +104,7 @@ namespace WindowsFormsCruiser
             // labelDocks
             // 
             this.labelDocks.AutoSize = true;
-            this.labelDocks.Location = new System.Drawing.Point(745, 219);
+            this.labelDocks.Location = new System.Drawing.Point(743, 204);
             this.labelDocks.Name = "labelDocks";
             this.labelDocks.Size = new System.Drawing.Size(99, 13);
             this.labelDocks.TabIndex = 5;
@@ -133,14 +112,14 @@ namespace WindowsFormsCruiser
             // 
             // textBoxNewDockingStage
             // 
-            this.textBoxNewDockingStage.Location = new System.Drawing.Point(711, 238);
+            this.textBoxNewDockingStage.Location = new System.Drawing.Point(714, 220);
             this.textBoxNewDockingStage.Name = "textBoxNewDockingStage";
             this.textBoxNewDockingStage.Size = new System.Drawing.Size(165, 20);
             this.textBoxNewDockingStage.TabIndex = 6;
             // 
             // buttonAddDocking
             // 
-            this.buttonAddDocking.Location = new System.Drawing.Point(714, 264);
+            this.buttonAddDocking.Location = new System.Drawing.Point(715, 246);
             this.buttonAddDocking.Name = "buttonAddDocking";
             this.buttonAddDocking.Size = new System.Drawing.Size(161, 23);
             this.buttonAddDocking.TabIndex = 7;
@@ -150,7 +129,7 @@ namespace WindowsFormsCruiser
             // 
             // buttonDelDocking
             // 
-            this.buttonDelDocking.Location = new System.Drawing.Point(714, 293);
+            this.buttonDelDocking.Location = new System.Drawing.Point(714, 275);
             this.buttonDelDocking.Name = "buttonDelDocking";
             this.buttonDelDocking.Size = new System.Drawing.Size(161, 23);
             this.buttonDelDocking.TabIndex = 8;
@@ -158,19 +137,28 @@ namespace WindowsFormsCruiser
             this.buttonDelDocking.UseVisualStyleBackColor = true;
             this.buttonDelDocking.Click += new System.EventHandler(this.buttonDelDocking_Click);
             // 
+            // buttonSetShip
+            // 
+            this.buttonSetShip.Location = new System.Drawing.Point(739, 23);
+            this.buttonSetShip.Name = "buttonSetShip";
+            this.buttonSetShip.Size = new System.Drawing.Size(117, 31);
+            this.buttonSetShip.TabIndex = 9;
+            this.buttonSetShip.Text = "Добавить корабль";
+            this.buttonSetShip.UseVisualStyleBackColor = true;
+            this.buttonSetShip.Click += new System.EventHandler(this.buttonSetShip_Click);
+            // 
             // FormDocking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 462);
+            this.Controls.Add(this.buttonSetShip);
             this.Controls.Add(this.buttonDelDocking);
             this.Controls.Add(this.buttonAddDocking);
             this.Controls.Add(this.textBoxNewDockingStage);
             this.Controls.Add(this.labelDocks);
             this.Controls.Add(this.listBoxDockings);
             this.Controls.Add(this.groupBoxDocking);
-            this.Controls.Add(this.buttonSetCruiser);
-            this.Controls.Add(this.buttonSetShip);
             this.Controls.Add(this.pictureBoxDocking);
             this.Name = "FormDocking";
             this.Text = "Стоянка";
@@ -185,8 +173,6 @@ namespace WindowsFormsCruiser
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxDocking;
-        private System.Windows.Forms.Button buttonSetShip;
-        private System.Windows.Forms.Button buttonSetCruiser;
         private System.Windows.Forms.GroupBox groupBoxDocking;
         private System.Windows.Forms.Button buttonTakeShip;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPlace;
@@ -196,5 +182,6 @@ namespace WindowsFormsCruiser
         private System.Windows.Forms.TextBox textBoxNewDockingStage;
         private System.Windows.Forms.Button buttonAddDocking;
         private System.Windows.Forms.Button buttonDelDocking;
+        private System.Windows.Forms.Button buttonSetShip;
     }
 }

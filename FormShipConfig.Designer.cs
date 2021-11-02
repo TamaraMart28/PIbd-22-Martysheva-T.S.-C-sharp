@@ -43,16 +43,18 @@ namespace WindowsFormsCruiser
             this.labelShipConfig = new System.Windows.Forms.Label();
             this.panelShipConfig = new System.Windows.Forms.Panel();
             this.groupBoxColors = new System.Windows.Forms.GroupBox();
-            this.panelColorBlack = new System.Windows.Forms.Panel();
-            this.panelColorGreen = new System.Windows.Forms.Panel();
-            this.panelColorBlue = new System.Windows.Forms.Panel();
-            this.panelColorYellow = new System.Windows.Forms.Panel();
-            this.panelColorRed = new System.Windows.Forms.Panel();
-            this.panelColorDarkBlue = new System.Windows.Forms.Panel();
-            this.panelColorOrange = new System.Windows.Forms.Panel();
-            this.panelColorWhite = new System.Windows.Forms.Panel();
-            this.labelMainColor = new System.Windows.Forms.Label();
             this.labelDopColor = new System.Windows.Forms.Label();
+            this.labelMainColor = new System.Windows.Forms.Label();
+            this.panelWhiteColor = new System.Windows.Forms.Panel();
+            this.panelOrangeColor = new System.Windows.Forms.Panel();
+            this.panelDarkBlueColor = new System.Windows.Forms.Panel();
+            this.panelRedColor = new System.Windows.Forms.Panel();
+            this.panelYellowColor = new System.Windows.Forms.Panel();
+            this.panelBlueColor = new System.Windows.Forms.Panel();
+            this.panelGreenColor = new System.Windows.Forms.Panel();
+            this.panelBlackColor = new System.Windows.Forms.Panel();
+            this.buttonAddShipConfig = new System.Windows.Forms.Button();
+            this.buttonCancelConfig = new System.Windows.Forms.Button();
             this.groupBoxOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSpeed)).BeginInit();
@@ -71,9 +73,9 @@ namespace WindowsFormsCruiser
             this.groupBoxOptions.Controls.Add(this.numericUpDownMaxSpeed);
             this.groupBoxOptions.Controls.Add(this.labelWeight);
             this.groupBoxOptions.Controls.Add(this.labelMaxSpeed);
-            this.groupBoxOptions.Location = new System.Drawing.Point(21, 213);
+            this.groupBoxOptions.Location = new System.Drawing.Point(21, 12);
             this.groupBoxOptions.Name = "groupBoxOptions";
-            this.groupBoxOptions.Size = new System.Drawing.Size(284, 193);
+            this.groupBoxOptions.Size = new System.Drawing.Size(284, 173);
             this.groupBoxOptions.TabIndex = 0;
             this.groupBoxOptions.TabStop = false;
             this.groupBoxOptions.Text = "Параметры";
@@ -81,7 +83,7 @@ namespace WindowsFormsCruiser
             // checkBoxGun
             // 
             this.checkBoxGun.AutoSize = true;
-            this.checkBoxGun.Location = new System.Drawing.Point(103, 161);
+            this.checkBoxGun.Location = new System.Drawing.Point(101, 145);
             this.checkBoxGun.Name = "checkBoxGun";
             this.checkBoxGun.Size = new System.Drawing.Size(59, 17);
             this.checkBoxGun.TabIndex = 6;
@@ -91,7 +93,7 @@ namespace WindowsFormsCruiser
             // checkBoxRadar
             // 
             this.checkBoxRadar.AutoSize = true;
-            this.checkBoxRadar.Location = new System.Drawing.Point(105, 127);
+            this.checkBoxRadar.Location = new System.Drawing.Point(103, 112);
             this.checkBoxRadar.Name = "checkBoxRadar";
             this.checkBoxRadar.Size = new System.Drawing.Size(57, 17);
             this.checkBoxRadar.TabIndex = 5;
@@ -101,7 +103,7 @@ namespace WindowsFormsCruiser
             // checkBoxHelipad
             // 
             this.checkBoxHelipad.AutoSize = true;
-            this.checkBoxHelipad.Location = new System.Drawing.Point(66, 91);
+            this.checkBoxHelipad.Location = new System.Drawing.Point(65, 81);
             this.checkBoxHelipad.Name = "checkBoxHelipad";
             this.checkBoxHelipad.Size = new System.Drawing.Size(145, 17);
             this.checkBoxHelipad.TabIndex = 4;
@@ -110,7 +112,7 @@ namespace WindowsFormsCruiser
             // 
             // numericUpDownWeight
             // 
-            this.numericUpDownWeight.Location = new System.Drawing.Point(149, 55);
+            this.numericUpDownWeight.Location = new System.Drawing.Point(149, 46);
             this.numericUpDownWeight.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -132,7 +134,7 @@ namespace WindowsFormsCruiser
             // 
             // numericUpDownMaxSpeed
             // 
-            this.numericUpDownMaxSpeed.Location = new System.Drawing.Point(149, 29);
+            this.numericUpDownMaxSpeed.Location = new System.Drawing.Point(149, 20);
             this.numericUpDownMaxSpeed.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -155,7 +157,7 @@ namespace WindowsFormsCruiser
             // labelWeight
             // 
             this.labelWeight.AutoSize = true;
-            this.labelWeight.Location = new System.Drawing.Point(39, 57);
+            this.labelWeight.Location = new System.Drawing.Point(36, 48);
             this.labelWeight.Name = "labelWeight";
             this.labelWeight.Size = new System.Drawing.Size(74, 13);
             this.labelWeight.TabIndex = 1;
@@ -164,7 +166,7 @@ namespace WindowsFormsCruiser
             // labelMaxSpeed
             // 
             this.labelMaxSpeed.AutoSize = true;
-            this.labelMaxSpeed.Location = new System.Drawing.Point(6, 31);
+            this.labelMaxSpeed.Location = new System.Drawing.Point(6, 20);
             this.labelMaxSpeed.Name = "labelMaxSpeed";
             this.labelMaxSpeed.Size = new System.Drawing.Size(137, 13);
             this.labelMaxSpeed.TabIndex = 0;
@@ -182,9 +184,9 @@ namespace WindowsFormsCruiser
             // 
             this.groupBoxShipType.Controls.Add(this.labelCruiserConfig);
             this.groupBoxShipType.Controls.Add(this.labelShipConfig);
-            this.groupBoxShipType.Location = new System.Drawing.Point(21, 31);
+            this.groupBoxShipType.Location = new System.Drawing.Point(335, 214);
             this.groupBoxShipType.Name = "groupBoxShipType";
-            this.groupBoxShipType.Size = new System.Drawing.Size(275, 114);
+            this.groupBoxShipType.Size = new System.Drawing.Size(284, 104);
             this.groupBoxShipType.TabIndex = 2;
             this.groupBoxShipType.TabStop = false;
             this.groupBoxShipType.Text = "Тип корабля";
@@ -215,7 +217,7 @@ namespace WindowsFormsCruiser
             // 
             this.panelShipConfig.AllowDrop = true;
             this.panelShipConfig.Controls.Add(this.pictureBoxShipConfig);
-            this.panelShipConfig.Location = new System.Drawing.Point(335, 31);
+            this.panelShipConfig.Location = new System.Drawing.Point(335, 12);
             this.panelShipConfig.Name = "panelShipConfig";
             this.panelShipConfig.Size = new System.Drawing.Size(274, 173);
             this.panelShipConfig.TabIndex = 3;
@@ -226,97 +228,24 @@ namespace WindowsFormsCruiser
             // 
             this.groupBoxColors.Controls.Add(this.labelDopColor);
             this.groupBoxColors.Controls.Add(this.labelMainColor);
-            this.groupBoxColors.Controls.Add(this.panelColorWhite);
-            this.groupBoxColors.Controls.Add(this.panelColorOrange);
-            this.groupBoxColors.Controls.Add(this.panelColorDarkBlue);
-            this.groupBoxColors.Controls.Add(this.panelColorRed);
-            this.groupBoxColors.Controls.Add(this.panelColorYellow);
-            this.groupBoxColors.Controls.Add(this.panelColorBlue);
-            this.groupBoxColors.Controls.Add(this.panelColorGreen);
-            this.groupBoxColors.Controls.Add(this.panelColorBlack);
-            this.groupBoxColors.Location = new System.Drawing.Point(335, 230);
+            this.groupBoxColors.Controls.Add(this.panelWhiteColor);
+            this.groupBoxColors.Controls.Add(this.panelOrangeColor);
+            this.groupBoxColors.Controls.Add(this.panelDarkBlueColor);
+            this.groupBoxColors.Controls.Add(this.panelRedColor);
+            this.groupBoxColors.Controls.Add(this.panelYellowColor);
+            this.groupBoxColors.Controls.Add(this.panelBlueColor);
+            this.groupBoxColors.Controls.Add(this.panelGreenColor);
+            this.groupBoxColors.Controls.Add(this.panelBlackColor);
+            this.groupBoxColors.Location = new System.Drawing.Point(21, 214);
             this.groupBoxColors.Name = "groupBoxColors";
-            this.groupBoxColors.Size = new System.Drawing.Size(274, 176);
+            this.groupBoxColors.Size = new System.Drawing.Size(284, 176);
             this.groupBoxColors.TabIndex = 4;
             this.groupBoxColors.TabStop = false;
             this.groupBoxColors.Text = "Цвета";
             // 
-            // panelColorBlack
-            // 
-            this.panelColorBlack.BackColor = System.Drawing.Color.Black;
-            this.panelColorBlack.Location = new System.Drawing.Point(32, 74);
-            this.panelColorBlack.Name = "panelColorBlack";
-            this.panelColorBlack.Size = new System.Drawing.Size(30, 30);
-            this.panelColorBlack.TabIndex = 0;
-            // 
-            // panelColorGreen
-            // 
-            this.panelColorGreen.BackColor = System.Drawing.Color.LimeGreen;
-            this.panelColorGreen.Location = new System.Drawing.Point(91, 74);
-            this.panelColorGreen.Name = "panelColorGreen";
-            this.panelColorGreen.Size = new System.Drawing.Size(30, 30);
-            this.panelColorGreen.TabIndex = 1;
-            // 
-            // panelColorBlue
-            // 
-            this.panelColorBlue.BackColor = System.Drawing.Color.Turquoise;
-            this.panelColorBlue.Location = new System.Drawing.Point(150, 74);
-            this.panelColorBlue.Name = "panelColorBlue";
-            this.panelColorBlue.Size = new System.Drawing.Size(30, 30);
-            this.panelColorBlue.TabIndex = 2;
-            // 
-            // panelColorYellow
-            // 
-            this.panelColorYellow.BackColor = System.Drawing.Color.Yellow;
-            this.panelColorYellow.Location = new System.Drawing.Point(210, 74);
-            this.panelColorYellow.Name = "panelColorYellow";
-            this.panelColorYellow.Size = new System.Drawing.Size(30, 30);
-            this.panelColorYellow.TabIndex = 3;
-            // 
-            // panelColorRed
-            // 
-            this.panelColorRed.BackColor = System.Drawing.Color.Red;
-            this.panelColorRed.Location = new System.Drawing.Point(32, 122);
-            this.panelColorRed.Name = "panelColorRed";
-            this.panelColorRed.Size = new System.Drawing.Size(30, 30);
-            this.panelColorRed.TabIndex = 4;
-            // 
-            // panelColorDarkBlue
-            // 
-            this.panelColorDarkBlue.BackColor = System.Drawing.Color.Blue;
-            this.panelColorDarkBlue.Location = new System.Drawing.Point(91, 122);
-            this.panelColorDarkBlue.Name = "panelColorDarkBlue";
-            this.panelColorDarkBlue.Size = new System.Drawing.Size(30, 30);
-            this.panelColorDarkBlue.TabIndex = 5;
-            // 
-            // panelColorOrange
-            // 
-            this.panelColorOrange.BackColor = System.Drawing.Color.Orange;
-            this.panelColorOrange.Location = new System.Drawing.Point(150, 122);
-            this.panelColorOrange.Name = "panelColorOrange";
-            this.panelColorOrange.Size = new System.Drawing.Size(30, 30);
-            this.panelColorOrange.TabIndex = 6;
-            // 
-            // panelColorWhite
-            // 
-            this.panelColorWhite.BackColor = System.Drawing.Color.Snow;
-            this.panelColorWhite.Location = new System.Drawing.Point(210, 122);
-            this.panelColorWhite.Name = "panelColorWhite";
-            this.panelColorWhite.Size = new System.Drawing.Size(30, 30);
-            this.panelColorWhite.TabIndex = 7;
-            // 
-            // labelMainColor
-            // 
-            this.labelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMainColor.Location = new System.Drawing.Point(32, 30);
-            this.labelMainColor.Name = "labelMainColor";
-            this.labelMainColor.Size = new System.Drawing.Size(100, 23);
-            this.labelMainColor.TabIndex = 8;
-            this.labelMainColor.Text = "Основной цвет";
-            this.labelMainColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // labelDopColor
             // 
+            this.labelDopColor.AllowDrop = true;
             this.labelDopColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelDopColor.Location = new System.Drawing.Point(140, 30);
             this.labelDopColor.Name = "labelDopColor";
@@ -324,15 +253,115 @@ namespace WindowsFormsCruiser
             this.labelDopColor.TabIndex = 9;
             this.labelDopColor.Text = "Доп-ый цвет";
             this.labelDopColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelDopColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelDopColor_DragDrop);
+            this.labelDopColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelMainColor_DragEnter);
+            // 
+            // labelMainColor
+            // 
+            this.labelMainColor.AllowDrop = true;
+            this.labelMainColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMainColor.Location = new System.Drawing.Point(32, 30);
+            this.labelMainColor.Name = "labelMainColor";
+            this.labelMainColor.Size = new System.Drawing.Size(100, 23);
+            this.labelMainColor.TabIndex = 8;
+            this.labelMainColor.Text = "Основной цвет";
+            this.labelMainColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMainColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelMainColor_DragDrop);
+            this.labelMainColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelMainColor_DragEnter);
+            // 
+            // panelWhiteColor
+            // 
+            this.panelWhiteColor.BackColor = System.Drawing.Color.Snow;
+            this.panelWhiteColor.Location = new System.Drawing.Point(210, 122);
+            this.panelWhiteColor.Name = "panelWhiteColor";
+            this.panelWhiteColor.Size = new System.Drawing.Size(30, 30);
+            this.panelWhiteColor.TabIndex = 7;
+            // 
+            // panelOrangeColor
+            // 
+            this.panelOrangeColor.BackColor = System.Drawing.Color.Orange;
+            this.panelOrangeColor.Location = new System.Drawing.Point(150, 122);
+            this.panelOrangeColor.Name = "panelOrangeColor";
+            this.panelOrangeColor.Size = new System.Drawing.Size(30, 30);
+            this.panelOrangeColor.TabIndex = 6;
+            // 
+            // panelDarkBlueColor
+            // 
+            this.panelDarkBlueColor.BackColor = System.Drawing.Color.Blue;
+            this.panelDarkBlueColor.Location = new System.Drawing.Point(91, 122);
+            this.panelDarkBlueColor.Name = "panelDarkBlueColor";
+            this.panelDarkBlueColor.Size = new System.Drawing.Size(30, 30);
+            this.panelDarkBlueColor.TabIndex = 5;
+            // 
+            // panelRedColor
+            // 
+            this.panelRedColor.BackColor = System.Drawing.Color.Red;
+            this.panelRedColor.Location = new System.Drawing.Point(32, 122);
+            this.panelRedColor.Name = "panelRedColor";
+            this.panelRedColor.Size = new System.Drawing.Size(30, 30);
+            this.panelRedColor.TabIndex = 4;
+            // 
+            // panelYellowColor
+            // 
+            this.panelYellowColor.BackColor = System.Drawing.Color.Yellow;
+            this.panelYellowColor.Location = new System.Drawing.Point(210, 74);
+            this.panelYellowColor.Name = "panelYellowColor";
+            this.panelYellowColor.Size = new System.Drawing.Size(30, 30);
+            this.panelYellowColor.TabIndex = 3;
+            // 
+            // panelBlueColor
+            // 
+            this.panelBlueColor.BackColor = System.Drawing.Color.Turquoise;
+            this.panelBlueColor.Location = new System.Drawing.Point(150, 74);
+            this.panelBlueColor.Name = "panelBlueColor";
+            this.panelBlueColor.Size = new System.Drawing.Size(30, 30);
+            this.panelBlueColor.TabIndex = 2;
+            // 
+            // panelGreenColor
+            // 
+            this.panelGreenColor.BackColor = System.Drawing.Color.LimeGreen;
+            this.panelGreenColor.Location = new System.Drawing.Point(91, 74);
+            this.panelGreenColor.Name = "panelGreenColor";
+            this.panelGreenColor.Size = new System.Drawing.Size(30, 30);
+            this.panelGreenColor.TabIndex = 1;
+            // 
+            // panelBlackColor
+            // 
+            this.panelBlackColor.BackColor = System.Drawing.Color.Black;
+            this.panelBlackColor.Location = new System.Drawing.Point(32, 74);
+            this.panelBlackColor.Name = "panelBlackColor";
+            this.panelBlackColor.Size = new System.Drawing.Size(30, 30);
+            this.panelBlackColor.TabIndex = 0;
+            // 
+            // buttonAddShipConfig
+            // 
+            this.buttonAddShipConfig.Location = new System.Drawing.Point(357, 336);
+            this.buttonAddShipConfig.Name = "buttonAddShipConfig";
+            this.buttonAddShipConfig.Size = new System.Drawing.Size(90, 38);
+            this.buttonAddShipConfig.TabIndex = 5;
+            this.buttonAddShipConfig.Text = "Добавить";
+            this.buttonAddShipConfig.UseVisualStyleBackColor = true;
+            this.buttonAddShipConfig.Click += new System.EventHandler(this.buttonAddShipConfig_Click);
+            // 
+            // buttonCancelConfig
+            // 
+            this.buttonCancelConfig.Location = new System.Drawing.Point(500, 336);
+            this.buttonCancelConfig.Name = "buttonCancelConfig";
+            this.buttonCancelConfig.Size = new System.Drawing.Size(90, 38);
+            this.buttonCancelConfig.TabIndex = 6;
+            this.buttonCancelConfig.Text = "Отмена";
+            this.buttonCancelConfig.UseVisualStyleBackColor = true;
             // 
             // FormShipConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 418);
+            this.ClientSize = new System.Drawing.Size(642, 401);
+            this.Controls.Add(this.buttonCancelConfig);
+            this.Controls.Add(this.groupBoxShipType);
+            this.Controls.Add(this.buttonAddShipConfig);
             this.Controls.Add(this.groupBoxColors);
             this.Controls.Add(this.panelShipConfig);
-            this.Controls.Add(this.groupBoxShipType);
             this.Controls.Add(this.groupBoxOptions);
             this.Name = "FormShipConfig";
             this.Text = "Создание корабля";
@@ -366,13 +395,15 @@ namespace WindowsFormsCruiser
         private System.Windows.Forms.GroupBox groupBoxColors;
         private System.Windows.Forms.Label labelDopColor;
         private System.Windows.Forms.Label labelMainColor;
-        private System.Windows.Forms.Panel panelColorWhite;
-        private System.Windows.Forms.Panel panelColorOrange;
-        private System.Windows.Forms.Panel panelColorDarkBlue;
-        private System.Windows.Forms.Panel panelColorRed;
-        private System.Windows.Forms.Panel panelColorYellow;
-        private System.Windows.Forms.Panel panelColorBlue;
-        private System.Windows.Forms.Panel panelColorGreen;
-        private System.Windows.Forms.Panel panelColorBlack;
+        private System.Windows.Forms.Panel panelWhiteColor;
+        private System.Windows.Forms.Panel panelOrangeColor;
+        private System.Windows.Forms.Panel panelDarkBlueColor;
+        private System.Windows.Forms.Panel panelRedColor;
+        private System.Windows.Forms.Panel panelYellowColor;
+        private System.Windows.Forms.Panel panelBlueColor;
+        private System.Windows.Forms.Panel panelGreenColor;
+        private System.Windows.Forms.Panel panelBlackColor;
+        private System.Windows.Forms.Button buttonAddShipConfig;
+        private System.Windows.Forms.Button buttonCancelConfig;
     }
 }

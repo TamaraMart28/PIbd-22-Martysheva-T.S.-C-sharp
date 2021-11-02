@@ -57,46 +57,9 @@ namespace WindowsFormsCruiser
 
         private void buttonSetShip_Click(object sender, EventArgs e)
         {
-            if (listBoxDockings.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var ship = new Ship(100, 1000, dialog.Color);
-                    if (dockingCollection[listBoxDockings.SelectedItem.ToString()] + ship != -1)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Нет свободных доков на стоянке");
-                    }
-                }
-            }
-        }
-
-        private void buttonSetCruiser_Click(object sender, EventArgs e)
-        {
-            if (listBoxDockings.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var ship = new Cruiser(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                        if (dockingCollection[listBoxDockings.SelectedItem.ToString()] + ship != -1)
-                        {
-                            Draw();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Нет свободных доков на стоянке");
-                        }
-                    }
-                }
-            }
+            var formCarConfig = new FormShipConfig();
+            formCarConfig.AddEvent(AddShip);
+            formCarConfig.Show();
         }
 
         private void buttonTakeShip_Click(object sender, EventArgs e)
@@ -142,6 +105,21 @@ namespace WindowsFormsCruiser
         private void listBoxDockings_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+
+        private void AddShip(Vehicle ship)
+        {
+            if (ship != null && listBoxDockings.SelectedIndex > -1)
+            {
+                if ((dockingCollection[listBoxDockings.SelectedItem.ToString()]) + ship != -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Нет свободных доков на стоянке");
+                }
+            }
         }
     }
 }
