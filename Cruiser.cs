@@ -63,5 +63,10 @@ namespace WindowsFormsCruiser
                 g.DrawLine(pen, gunPoint1, gunPoint3);
             }
         }
+
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }

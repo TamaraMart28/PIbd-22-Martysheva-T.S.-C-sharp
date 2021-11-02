@@ -62,6 +62,12 @@
     <Compile Include="FormDocking.Designer.cs">
       <DependentUpon>FormDocking.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormShipConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormShipConfig.Designer.cs">
+      <DependentUpon>FormShipConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDocking.resx">
       <DependentUpon>FormDocking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormShipConfig.resx">
+      <DependentUpon>FormShipConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
