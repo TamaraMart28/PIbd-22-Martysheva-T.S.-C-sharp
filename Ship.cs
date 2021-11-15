@@ -11,12 +11,24 @@ namespace WindowsFormsCruiser
     {
         protected readonly int cruiserWidth = 145;
         protected readonly int cruiserHeight = 50;
+        protected readonly char separator = ';';
 
         public Ship(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
+        }
+
+        public Ship(string info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
         }
 
         protected Ship(int maxSpeed, float weight, Color mainColor, int cruiserWidth, int cruiserHeight)
@@ -90,5 +102,11 @@ namespace WindowsFormsCruiser
             g.DrawRectangle(penMain, _startPosX, _startPosY + 10, 5, 10);
             g.DrawRectangle(penMain, _startPosX, _startPosY + 25, 5, 10);
         }
+
+        public override string ToString()
+        {
+            return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+        }
+
     }
 }

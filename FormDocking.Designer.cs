@@ -40,16 +40,23 @@ namespace WindowsFormsCruiser
             this.buttonAddDocking = new System.Windows.Forms.Button();
             this.buttonDelDocking = new System.Windows.Forms.Button();
             this.buttonSetShip = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialogShips = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialogShips = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDocking)).BeginInit();
             this.groupBoxDocking.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxDocking
             // 
             this.pictureBoxDocking.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxDocking.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxDocking.Location = new System.Drawing.Point(0, 24);
             this.pictureBoxDocking.Name = "pictureBoxDocking";
-            this.pictureBoxDocking.Size = new System.Drawing.Size(705, 462);
+            this.pictureBoxDocking.Size = new System.Drawing.Size(705, 438);
             this.pictureBoxDocking.TabIndex = 0;
             this.pictureBoxDocking.TabStop = false;
             // 
@@ -147,6 +154,48 @@ namespace WindowsFormsCruiser
             this.buttonSetShip.UseVisualStyleBackColor = true;
             this.buttonSetShip.Click += new System.EventHandler(this.buttonSetShip_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
+            // 
+            // saveFileDialogShips
+            // 
+            this.saveFileDialogShips.Filter = "txt file | *.txt";
+            // 
+            // openFileDialogShips
+            // 
+            this.openFileDialogShips.FileName = "openFileDialog1";
+            this.openFileDialogShips.Filter = "txt file | *.txt";
+            // 
             // FormDocking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,11 +209,15 @@ namespace WindowsFormsCruiser
             this.Controls.Add(this.listBoxDockings);
             this.Controls.Add(this.groupBoxDocking);
             this.Controls.Add(this.pictureBoxDocking);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormDocking";
             this.Text = "Стоянка";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDocking)).EndInit();
             this.groupBoxDocking.ResumeLayout(false);
             this.groupBoxDocking.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +236,11 @@ namespace WindowsFormsCruiser
         private System.Windows.Forms.Button buttonAddDocking;
         private System.Windows.Forms.Button buttonDelDocking;
         private System.Windows.Forms.Button buttonSetShip;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogShips;
+        private System.Windows.Forms.OpenFileDialog openFileDialogShips;
     }
 }
