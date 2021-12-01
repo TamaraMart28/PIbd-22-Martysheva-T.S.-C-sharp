@@ -92,7 +92,7 @@ namespace WindowsFormsCruiser
                 }
                 else
                 {
-                    throw new Exception("Неверный формат файла");
+                    throw new ArgumentException("Неверный формат файла");
                 }
                 Vehicle ship = null;
                 string key = string.Empty;
@@ -120,7 +120,7 @@ namespace WindowsFormsCruiser
                     var result = dockingStages[key] + ship;
                     if (result == -1)
                     {
-                        throw new Exception("Не удалось загрузить корабль на стоянку доков");
+                        throw new TypeLoadException("Не удалось загрузить корабль на стоянку доков");
                     }
                 }
             }
