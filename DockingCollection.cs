@@ -42,7 +42,7 @@ namespace WindowsFormsCruiser
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -75,14 +75,13 @@ namespace WindowsFormsCruiser
                     }
                 }
             }
-            return true;
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
 
             using(StreamReader sr = new StreamReader(filename, Encoding.UTF8))
@@ -93,7 +92,7 @@ namespace WindowsFormsCruiser
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Неверный формат файла");
                 }
                 Vehicle ship = null;
                 string key = string.Empty;
@@ -121,10 +120,9 @@ namespace WindowsFormsCruiser
                     var result = dockingStages[key] + ship;
                     if (result == -1)
                     {
-                        return false;
+                        throw new Exception("Не удалось загрузить корабль на стоянку доков");
                     }
                 }
-                return true;
             }
         }
     }

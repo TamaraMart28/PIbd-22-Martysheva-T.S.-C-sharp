@@ -1,4 +1,5 @@
 ﻿using System;
+using NLog;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,13 @@ namespace WindowsFormsCruiser
     public partial class FormDocking : Form
     {
         private readonly DockingCollection dockingCollection;
+        private readonly Logger logger;
 
         public FormDocking()
         {
             InitializeComponent();
             dockingCollection = new DockingCollection(pictureBoxDocking.Width, pictureBoxDocking.Height);
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private void ReloadLevels()
@@ -66,14 +69,26 @@ namespace WindowsFormsCruiser
         {
             if (listBoxDockings.SelectedIndex > -1 && maskedTextBoxPlace.Text != "")
             {
-                var ship = dockingCollection[listBoxDockings.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxPlace.Text);
-                if (ship != null)
+                try
                 {
-                    FormCruiser form = new FormCruiser();
-                    form.SetShip(ship);
-                    form.ShowDialog();
+                    var ship = dockingCollection[listBoxDockings.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxPlace.Text);
+                    if (ship != null)
+                    {
+                        FormCruiser form = new FormCruiser();
+                        form.SetShip(ship);
+                        form.ShowDialog();
+                        logger.Info($"Изъят корабль {ship} с места { maskedTextBoxPlace.Text} ");
+                    }
+                    Draw();
                 }
-                Draw();
+                catch (DockingNotFoundException ex)
+                {
+                    MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -85,6 +100,7 @@ namespace WindowsFormsCruiser
                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            logger.Info($"Добавили стоянку доков {textBoxNewDockingStage.Text}");
             dockingCollection.AddDocking(textBoxNewDockingStage.Text);
             ReloadLevels();
         }
@@ -95,6 +111,7 @@ namespace WindowsFormsCruiser
             {
                 if (MessageBox.Show($"Удалить стоянку доков { listBoxDockings.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    logger.Info($"Удалили стоянку доков { listBoxDockings.SelectedItem.ToString()} ");
                     dockingCollection.DelDocking(listBoxDockings.SelectedItem.ToString());
                     ReloadLevels();
                     Draw();
@@ -104,6 +121,7 @@ namespace WindowsFormsCruiser
 
         private void listBoxDockings_SelectedIndexChanged(object sender, EventArgs e)
         {
+            logger.Info($"Перешли на стоянку доков { listBoxDockings.SelectedItem.ToString()} ");
             Draw();
         }
 
@@ -111,13 +129,25 @@ namespace WindowsFormsCruiser
         {
             if (ship != null && listBoxDockings.SelectedIndex > -1)
             {
-                if ((dockingCollection[listBoxDockings.SelectedItem.ToString()]) + ship != -1)
+                try
                 {
-                    Draw();
+                    if ((dockingCollection[listBoxDockings.SelectedItem.ToString()]) + ship != -1)
+                    {
+                        Draw();
+                        logger.Info($"Добавлен корабль {ship}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Корабль не удалось поставить");
+                    }
                 }
-                else
+                catch (DockingOverflowException ex)
                 {
-                    MessageBox.Show("Нет свободных доков на стоянке");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -126,15 +156,15 @@ namespace WindowsFormsCruiser
         {
             if (saveFileDialogShips.ShowDialog() == DialogResult.OK)
             {
-                if (dockingCollection.SaveData(saveFileDialogShips.FileName))
+                try
                 {
-                    MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dockingCollection.SaveData(saveFileDialogShips.FileName);
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialogShips.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -143,17 +173,23 @@ namespace WindowsFormsCruiser
         {
             if (openFileDialogShips.ShowDialog() == DialogResult.OK)
             {
-                if (dockingCollection.LoadData(openFileDialogShips.FileName))
+                try
                 {
-                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
-                   MessageBoxIcon.Information);
+                    dockingCollection.LoadData(openFileDialogShips.FileName);
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialogShips.FileName);
                     ReloadLevels();
                     Draw();
                 }
-                else
+                catch (DockingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

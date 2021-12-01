@@ -28,26 +28,26 @@ namespace WindowsFormsCruiser
         
         public static int operator +(Docking<T> p, T ship)
         {
-            if (p._places.Count < p._maxCount)
+            if (p._places.Count >= p._maxCount)
             {
-                p._places.Add(ship);
-                return 1;
+                throw new DockingOverflowException();
             }
-            return -1;
+            p._places.Add(ship);
+            return 1;
         }
 
         public static T operator -(Docking<T> p, int index)
         {
-            if (index >= p._places.Count) return null;
+            if (index >= p._places.Count || index < 0) 
+            {
+                throw new DockingNotFoundException(index);
+            }
+            if (p._places[index] == null) return null;
             else
             {
-                if (p._places[index] == null) return null;
-                else
-                {
-                    T temp = p._places[index];
-                    p._places.RemoveAt(index);
-                    return temp;
-                }
+                T temp = p._places[index];
+                p._places.RemoveAt(index);
+                return temp;
             }
         }
 
