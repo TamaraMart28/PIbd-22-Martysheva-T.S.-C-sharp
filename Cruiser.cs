@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace WindowsFormsCruiser
 {
-    public class Cruiser : Ship
+    public class Cruiser : Ship, IEquatable<Cruiser>
     {
         public Color DopColor { private set; get; }
         //мои свойства
@@ -87,6 +87,48 @@ namespace WindowsFormsCruiser
         public override string ToString()
         {
             return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Helipad}{separator}{Radar}{separator}{Gun}";
+        }
+
+        public bool Equals(Cruiser other)
+        {
+            // Реализовать метод сравнения для дочернего класса
+            if (!Equals((Ship)other))
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (Helipad != other.Helipad)
+            {
+                return false;
+            }
+            if (Radar != other.Radar)
+            {
+                return false;
+            }
+            if (Gun != other.Gun)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Cruiser cruiserObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(cruiserObj);
+            }
         }
     }
 }
