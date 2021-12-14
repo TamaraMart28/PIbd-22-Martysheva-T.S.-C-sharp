@@ -54,8 +54,7 @@ namespace WindowsFormsCruiser
                 foreach (var level in dockingStages)
                 {
                     sw.WriteLine($"Docking{separator}{level.Key}");
-                    ITransport ship = null;
-                    for (int i = 0; (ship = level.Value.GetNext(i)) != null; i++)
+                    foreach (ITransport ship in level.Value)
                     {
                         if (ship != null)
                         {

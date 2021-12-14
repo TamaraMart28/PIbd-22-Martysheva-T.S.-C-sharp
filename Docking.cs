@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Collections;
 
 namespace WindowsFormsCruiser
 {
-    public class Docking<T> where T : class, ITransport
+    public class Docking<T> : IEnumerator<T>, IEnumerable<T> where T : class, ITransport
     {
         private readonly List<T> _places;
         private readonly int _maxCount;
@@ -15,6 +16,10 @@ namespace WindowsFormsCruiser
         private readonly int pictureHeight;
         private readonly int _placeSizeWidth = 322;
         private readonly int _placeSizeHeight = 66;
+        private int _currentIndex;
+        public T Current => _places[_currentIndex];
+        object IEnumerator.Current => _places[_currentIndex];
+
 
         public Docking(int picWidth, int picHeight)
         {
@@ -24,6 +29,7 @@ namespace WindowsFormsCruiser
             pictureWidth = picWidth;
             pictureHeight = picHeight;
             _places = new List<T>();
+            _currentIndex = -1;
         }
         
         public static int operator +(Docking<T> p, T ship)
@@ -32,6 +38,11 @@ namespace WindowsFormsCruiser
             {
                 throw new DockingOverflowException();
             }
+            if (p._places.Contains(ship))
+            {
+                throw new DockingAlreadyHaveException();
+            }
+
             p._places.Add(ship);
             return 1;
         }
@@ -88,6 +99,35 @@ namespace WindowsFormsCruiser
                 return null;
             }
             return _places[index];
+        }
+
+        public void Sort() => _places.Sort((IComparer<T>)new ShipComparer());
+
+        public void Dispose() {}
+
+        public bool MoveNext()
+        {
+            if (_currentIndex < _places.Count - 1)
+            {
+                _currentIndex++;
+                return true;
+            }
+            else return false;
+        }
+
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this;
         }
     }
 }

@@ -10,7 +10,20 @@ namespace WindowsFormsCruiser
     {
         public int Compare(Vehicle x, Vehicle y)
         {
-            // Реализовать метод сравнения для объектов
+            if (x is Ship && y is Cruiser) return -1;
+            
+            if (x is Cruiser && y is Ship) return 1;
+
+            if (x is Ship && y is Ship)
+            {
+                return ComparerShip((Ship)x, (Ship)y);
+            }
+
+            if (x is Cruiser && y is Cruiser)
+            {
+                return ComparerCruiser((Cruiser)x, (Cruiser)y);
+            }
+
             return 0;
         }
 

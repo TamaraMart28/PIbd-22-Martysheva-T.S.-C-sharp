@@ -148,6 +148,12 @@ namespace WindowsFormsCruiser
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     logger.Warn(ex);
                 }
+                catch (DockingAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn(ex);
+                }
+
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -199,6 +205,17 @@ namespace WindowsFormsCruiser
                     logger.Warn(ex);
                 }
             }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            if (listBoxDockings.SelectedIndex > -1)
+            {
+                dockingCollection[listBoxDockings.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
+            }
+
         }
     }
 }

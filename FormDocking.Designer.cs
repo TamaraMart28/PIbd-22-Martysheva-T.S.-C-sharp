@@ -46,6 +46,7 @@ namespace WindowsFormsCruiser
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialogShips = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialogShips = new System.Windows.Forms.OpenFileDialog();
+            this.buttonSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDocking)).BeginInit();
             this.groupBoxDocking.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -111,7 +112,7 @@ namespace WindowsFormsCruiser
             // labelDocks
             // 
             this.labelDocks.AutoSize = true;
-            this.labelDocks.Location = new System.Drawing.Point(743, 204);
+            this.labelDocks.Location = new System.Drawing.Point(741, 184);
             this.labelDocks.Name = "labelDocks";
             this.labelDocks.Size = new System.Drawing.Size(99, 13);
             this.labelDocks.TabIndex = 5;
@@ -119,14 +120,14 @@ namespace WindowsFormsCruiser
             // 
             // textBoxNewDockingStage
             // 
-            this.textBoxNewDockingStage.Location = new System.Drawing.Point(714, 220);
+            this.textBoxNewDockingStage.Location = new System.Drawing.Point(714, 200);
             this.textBoxNewDockingStage.Name = "textBoxNewDockingStage";
             this.textBoxNewDockingStage.Size = new System.Drawing.Size(165, 20);
             this.textBoxNewDockingStage.TabIndex = 6;
             // 
             // buttonAddDocking
             // 
-            this.buttonAddDocking.Location = new System.Drawing.Point(715, 246);
+            this.buttonAddDocking.Location = new System.Drawing.Point(714, 226);
             this.buttonAddDocking.Name = "buttonAddDocking";
             this.buttonAddDocking.Size = new System.Drawing.Size(161, 23);
             this.buttonAddDocking.TabIndex = 7;
@@ -136,7 +137,7 @@ namespace WindowsFormsCruiser
             // 
             // buttonDelDocking
             // 
-            this.buttonDelDocking.Location = new System.Drawing.Point(714, 275);
+            this.buttonDelDocking.Location = new System.Drawing.Point(714, 255);
             this.buttonDelDocking.Name = "buttonDelDocking";
             this.buttonDelDocking.Size = new System.Drawing.Size(161, 23);
             this.buttonDelDocking.TabIndex = 8;
@@ -176,14 +177,14 @@ namespace WindowsFormsCruiser
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
@@ -196,11 +197,22 @@ namespace WindowsFormsCruiser
             this.openFileDialogShips.FileName = "openFileDialog1";
             this.openFileDialogShips.Filter = "txt file | *.txt";
             // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(714, 287);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(158, 23);
+            this.buttonSort.TabIndex = 11;
+            this.buttonSort.Text = "Сортировать";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // FormDocking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 462);
+            this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.buttonSetShip);
             this.Controls.Add(this.buttonDelDocking);
             this.Controls.Add(this.buttonAddDocking);
@@ -242,5 +254,6 @@ namespace WindowsFormsCruiser
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialogShips;
         private System.Windows.Forms.OpenFileDialog openFileDialogShips;
+        private System.Windows.Forms.Button buttonSort;
     }
 }
